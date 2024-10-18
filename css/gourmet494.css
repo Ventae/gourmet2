@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+* 				{margin:0; padding:0; box-sizing:border-box;}
+html, body {font:10pt/180% "맑은 고딕","돋움"; color:#333; background:#f2f2f2;}
+a				{color:#333; text-decoration:none; }
+a:focus 	{outline:1px solid black;}
+
+img 		{display:block; max-width:100%;}	
+
+#layout 	{width:1200px; margin:auto; background:white; }
+
+
+/* 상단 */
+header 		{position: relative; height:110px; margin-bottom: 40px; background-color: black; padding: 20px 20px;}
+header h1 	{
+    text-align:left;  position: absolute; 
+    }
+header img 	{display:inline;}
+header a {color: white;}
+
+/* 메뉴 */
+h1+ nav 		{}
+
+nav> ul 		{
+    display:flex;
+    list-style:none;
+    position: relative;
+    justify-content: flex-end;
+
+}
+nav    li 		{
+    /* border: 3px solid red; */
+    flex: 1;
+    text-align:center;  
+    position:relative;
+    
+} 
+
+/* 메인메뉴 */
+nav  ul 	    {}
+nav  li> a 		{font-weight:bold; font-size:1rem; padding:10px; display:block;}
+nav  li> a:hover 	{background: black; color:white; }
+
+
+/* 서브메뉴 */
+nav  nav				{background:black;  position:absolute; width:100%;  display:none;   z-index:1;}
+nav  nav 	a 			{display:block; color:white; padding:9px;}
+nav  nav 	a:hover:not(.blank)  {background:#ffc000; font-weight:bold; text-shadow:1px 1px 3px rgba(0,0,0 ,  0.5);}	
+
+/***  스크립트없이 하위메뉴 보이기 기능. 
+nav:hover   nav 		{display:block;}    ***/
+
+
+/* 슬라이드 */
+header+ section> h2 			{display:none;}
+#slide								{position:relative;}
+#slide  a:not(:first-child){position:absolute; top:0;}
+
+
+/* 메인(공지사항+갤러리+비즈니스) */
+main 				{padding-top:20px;}
+main div {display: flex; justify-content: space-around;}
+main> section 	
+main> section h2 	{display:none;}
+
+
+/* 메인: 공지사항과 갤러리에  <h2> 공통으로 빨간테두리 */
+.tlt 		{border:1px solid #ff5050; display:inline-block; color:#ff5050; font-size:1.2rem;  padding:3px 6px; margin-bottom:15px;}
+
+/* 공지사항 */
+#notice 		{margin-bottom:40px;}
+#notice  ul  	{list-style:none; line-height:250%;}
+#notice  li  	{border-bottom:1px dashed #777;}
+#notice  span  	{float:right;}
+#notice  a:hover 	{color:#ff5050; text-decoration:underline;}
+
+
+/* 갤러리 */
+#gallery 	{}
+#gallery  div {display:flex; justify-content:space-between; margin : auto;}
+#gallery  div a {margin: 0 5px;}
+
+/* 하단 */
+footer 			{display:flex; align-items:center; margin-bottom:20px; padding:20px; background-color: #e6e6e6;}
+footer  p 		{flex:1; }
+footer  select 	{padding:3px;}
+footer  a:hover 	{text-decoration:underline;}
+
+
+        /* 팝업 CSS 추가 */
+        .popup {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 중앙 정렬 */
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            bottom: 10px; /* 우측 하단에 위치 */
+            right: 20px; /* 우측 하단에 위치 */
+            background-color: white; /* 빨간색 배경 */
+            color: black; /* 흰색 글자 */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 10px;
+            border: 1px solid black;
+        }
+
+        .close:hover {
+            background-color: #d32f2f; /* 마우스 오버 시 색상 변경 */
+        }
+
+        #popup-image {
+            max-width: 100%; /* 이미지 크기 조정 */
+            height: auto;
+        }
+
+
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0; /* 초기 높이 0 */
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+            transition: height 0.3s ease; /* 부드러운 애니메이션 */
+            z-index: -1; /* 배경이 메뉴 뒤에 위치하도록 설정 */
+        }
